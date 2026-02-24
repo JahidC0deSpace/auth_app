@@ -5,7 +5,6 @@ A modern, responsive dashboard application featuring secure authentication, real
 ## ✨ Key Features
 
 - **🔐 Secure Authentication**: Full Login and Registration flow with JWT-based sessions.
-- **✨ Smooth UI Transitions**: Seamless directional sliding animations between Login and Register pages using [Framer Motion](https://www.framer.com).
 - **👤 Profile Management**: Dynamic user profiles with real-time bio and username updates.
 - **🎨 Modular Styling**: Clean separation of concerns using **CSS Modules** for scoped, conflict-free styling.
 - **🛡️ Protected Routes**: Authentication-guarded dashboard and profile pages.
@@ -14,7 +13,6 @@ A modern, responsive dashboard application featuring secure authentication, real
 ## 🛠️ Tech Stack
 
 - **Frontend**: [React.js](https://react.dev)
-- **Animation**: [Framer Motion](https://www.framer.com)
 - **Routing**: [React Router v6](https://reactrouter.com)
 - **State Management**: React Context API
 - **API Handling**: [Axios](https://axios-http.com)
