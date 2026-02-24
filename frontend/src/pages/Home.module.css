@@ -1,0 +1,82 @@
+.container {
+  padding: 60px 40px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 280px;
+  padding: 35px 25px;
+  background: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* This replaces your onMouseEnter/Leave JS logic */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.cardText {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cardArrow {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-size: 1.5rem;
+  color: #667eea;
+  font-weight: bold;
+}

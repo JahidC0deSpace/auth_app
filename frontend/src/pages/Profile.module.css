@@ -1,0 +1,213 @@
+.container {
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin-top: 20px;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.profileCard {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.avatarSection {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.statusBadge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #10b981;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.profileInfo {
+  margin-top: 10px;
+}
+
+.username {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.bio {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.statsRow {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.editButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: transform 0.2s;
+}
+
+.editButton:hover {
+  transform: scale(1.02);
+}
+
+.form {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #667eea;
+}
+
+.textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.saveButton {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelButton {
+  flex: 1;
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
