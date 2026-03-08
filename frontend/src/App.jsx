@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import { AuthContext } from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route
           path="/"

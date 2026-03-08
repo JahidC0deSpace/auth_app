@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// models/User.js
 const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true, unique: true },
@@ -8,8 +7,11 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     bio: { type: String, default: "Hello, I am new here!" },
     isVerified: { type: Boolean, default: false },
+    resetOTP: String,
+    resetOTPExpires: Date,
   },
   { timestamps: true },
 );
 
+// THIS IS THE CRITICAL LINE:
 export default mongoose.model("User", userSchema);

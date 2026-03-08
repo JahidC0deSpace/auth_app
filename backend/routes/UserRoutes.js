@@ -4,6 +4,9 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js"; // Note the .js extension
 import { body, validationResult } from "express-validator";
 import { verifyToken } from "../middleware/verifyToken.js";
+import crypto from "crypto";
+import nodemailer from "nodemailer";
+import { sendOTP } from "../utils/email.js";
 
 const router = express.Router();
 
@@ -157,5 +160,83 @@ router.put("/profile/update", verifyToken, async (req, res) => {
     res.status(500).json({ message: "Update failed" });
   }
 });
+
+// FORGOT PASSWORD: Send 6-digit OTP
+router.post("/forgot-password", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    // Security: Don't reveal if email exists, but for dev we return 404
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Generate 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Hash OTP before saving to DB
+    const salt = await bcrypt.genSalt(10);
+    user.resetOTP = await bcrypt.hash(otp, salt);
+    user.resetOTPExpires = Date.now() + 600000; // 10 mins
+    await user.save();
+
+    // Send email using your utility
+    await sendOTP(email, otp);
+
+    res
+      .status(200)
+      .json({ message: "OTP sent! Check your terminal for the Preview URL." });
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+//RESET PASSWORD: Verify OTP & Update Password
+router.post(
+  "/reset-password",
+  [
+    // Reuse your strong password validation rules
+    body("newPassword")
+      .isLength({ min: 8 })
+      .withMessage("Password must be at least 8 characters")
+      .matches(/\d/)
+      .withMessage("Must contain a number")
+      .matches(/[A-Z]/)
+      .withMessage("Must contain an uppercase letter"),
+    body("otp")
+      .isLength({ min: 6, max: 6 })
+      .withMessage("OTP must be 6 digits"),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ message: errors.array()[0].msg });
+
+    try {
+      const { email, otp, newPassword } = req.body;
+      const user = await User.findOne({ email });
+
+      if (!user || !user.resetOTP || Date.now() > user.resetOTPExpires) {
+        return res.status(400).json({ message: "OTP expired or invalid" });
+      }
+
+      // Compare provided OTP with hashed OTP in DB
+      const isOtpValid = await bcrypt.compare(otp, user.resetOTP);
+      if (!isOtpValid) return res.status(400).json({ message: "Invalid OTP" });
+
+      // Hash and save new password
+      const salt = await bcrypt.genSalt(12);
+      user.password = await bcrypt.hash(newPassword, salt);
+
+      // Clean up reset fields
+      user.resetOTP = undefined;
+      user.resetOTPExpires = undefined;
+      await user.save();
+
+      res.status(200).json({ message: "Password reset successful!" });
+    } catch (err) {
+      res.status(500).json({ message: "Server error" });
+    }
+  },
+);
 
 export default router;

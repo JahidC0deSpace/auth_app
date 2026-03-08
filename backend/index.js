@@ -11,13 +11,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use("/api/user", UserRoutes);
-
-import { verifyToken } from "./middleware/verifyToken.js";
-app.get("/api/test", verifyToken, (req, res) => {
-  res.send("If you see this, your token is valid!");
+app.use((req, res, next) => {
+  console.log(`${req.method} request to: ${req.url}`);
+  next();
 });
 
 connectDB().then(() => {

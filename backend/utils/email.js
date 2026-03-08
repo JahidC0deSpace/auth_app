@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // Use false for port 587
   auth: {
-    user: "amely.konopelski80@ethereal.email",
-    pass: "k64C8nadcM5KB83Mwb",
+    user: "delta.yundt67@ethereal.email",
+    pass: "tTAh3CGdKz7BbT2qAq",
   },
 });
 
@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
  */
 export const sendOTP = async (email, otp) => {
   const mailOptions = {
-    from: '"Dev Team" <amely.konopelski80@ethereal.email>',
+    from: '"Dev Team" <delta.yundt67@ethereal.email>',
     to: email,
     subject: "Your Verification Code",
     text: `Your OTP is: ${otp}. It expires in 10 minutes.`,

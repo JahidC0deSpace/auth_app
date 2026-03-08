@@ -119,6 +119,7 @@
     transform 0.2s,
     box-shadow 0.2s;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  margin-bottom: 10px;
 }
 
 /* Replaces JS onMouseEnter/Leave logic */
@@ -135,6 +136,24 @@
   background: #fef2f2;
   padding: 10px;
   border-radius: 8px;
+}
+
+/* NEW: Forgot Password Button Style */
+.forgotBtn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  color: #6366f1;
+  border: 1px solid #6366f1;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.forgotBtn:hover {
+  background-color: rgba(99, 102, 241, 0.05);
 }
 
 .footerText {

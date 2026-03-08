@@ -72,6 +72,13 @@ const Login = () => {
           <button type="submit" className={styles.button}>
             Sign In
           </button>
+          <button
+            type="button"
+            className={styles.forgotBtn}
+            onClick={() => navigate("/forgot-password")}
+          >
+            Forgot Password?
+          </button>
 
           <p className={styles.footerText}>
             New user?{" "}
